@@ -1,16 +1,30 @@
 using UnityEngine;
+using UnityEngine.UI; // UI操作に必要
+using System.Collections;
 
-public class NewMonoBehaviourScript : MonoBehaviour
+public class BlinkText : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public float interval = 0.5f;
+    private MaskableGraphic targetGraphic; // TextやImageの親クラス
+
     void Start()
     {
-        
+        // Textコンポーネントを取得
+        targetGraphic = GetComponent<MaskableGraphic>();
+
+        if (targetGraphic != null)
+        {
+            StartCoroutine(Blink());
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    IEnumerator Blink()
     {
-        
+        while (true)
+        {
+            // 有効・無効を切り替えて点滅
+            targetGraphic.enabled = !targetGraphic.enabled;
+            yield return new WaitForSeconds(interval);
+        }
     }
 }
