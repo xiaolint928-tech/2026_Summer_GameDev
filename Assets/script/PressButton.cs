@@ -1,30 +1,28 @@
 using UnityEngine;
-using UnityEngine.UI; // UI操作に必要
-using System.Collections;
+using UnityEngine.UI;
 
-public class BlinkText : MonoBehaviour
+public class PressButton : MonoBehaviour
 {
-    public float interval = 0.5f;
-    private MaskableGraphic targetGraphic; // TextやImageの親クラス
+    public float speed = 2.0f; // 点滅の速さ
+    private MaskableGraphic targetGraphic;
 
     void Start()
     {
-        // Textコンポーネントを取得
         targetGraphic = GetComponent<MaskableGraphic>();
-
-        if (targetGraphic != null)
-        {
-            StartCoroutine(Blink());
-        }
     }
 
-    IEnumerator Blink()
+    void Update()
     {
-        while (true)
+        if (targetGraphic != null)
         {
-            // 有効・無効を切り替えて点滅
-            targetGraphic.enabled = !targetGraphic.enabled;
-            yield return new WaitForSeconds(interval);
+            // サイン波を使って 0.0 〜 1.0 の間をゆらゆらさせる
+            // Time.time はゲーム開始からの経過時間
+            float alpha = (Mathf.Sin(Time.time * speed) + 0.5f) / 2.0f;
+
+            // 色情報を取得して、アルファ値（a）だけを書き換える
+            Color color = targetGraphic.color;
+            color.a = alpha;
+            targetGraphic.color = color;
         }
     }
 }
