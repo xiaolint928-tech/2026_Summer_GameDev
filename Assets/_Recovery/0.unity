@@ -532,8 +532,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1264412363}
   - component: {fileID: 1264412365}
-  - component: {fileID: 1264412366}
   - component: {fileID: 1264412364}
+  - component: {fileID: 1264412366}
   m_Layer: 5
   m_Name: Text (Legacy)
   m_TagString: PreasePressButton
@@ -615,8 +615,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PressButton
   speed: 3
-  targetPosition: {x: -21, y: 51, z: 0}
-  smoothness: 1
 --- !u!1 &1529141003
 GameObject:
   m_ObjectHideFlags: 0

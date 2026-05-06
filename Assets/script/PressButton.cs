@@ -1,18 +1,22 @@
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.InputSystem;
+using UnityEngine.InputSyst
 
 public class PressButton : MonoBehaviour
 {
     public float speed = 2.0f; // 点滅の速さ
-    public bool isKeyPressed;
+    //public Vector3 targetPosition = new Vector3(-21, 51, 0);
+    public float smoothness = 0.1f;
+    private bool isKeyPressed;
     private MaskableGraphic targetGraphic;
-
+    GameObject pressB;
+    GameObject TitleHDA;
     void Start()
     {
         targetGraphic = GetComponent<MaskableGraphic>();
+        pressB = GameObject.FindGameObjectWithTag("PreasePressButton");//←のタグを全て取得
+        //TitleHDA = GameObject.FindGameObjectWithTag("TitleImage(HeartDrumAttack)");
     }
-
     void Update()
     {
         if (targetGraphic != null)
@@ -29,7 +33,9 @@ public class PressButton : MonoBehaviour
         isKeyPressed = Keyboard.current != null && Keyboard.current.anyKey.wasPressedThisFrame;
         if (isKeyPressed==true)
         {
-            Debug.Log("いずれかのキーが押されました。");
+            pressB.SetActive(false);//PleasePressButton tag 非表示
+            //TitleHDA.transform.position = Vector3.Lerp(transform.position, targetPosition, smoothness);
+            Debug.Log("いずれかのキーが押されました。(PressButton)");
         }
     }
 }
