@@ -615,7 +615,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PressButton
   speed: 3
-  targetPosition: {x: -21, y: 51, z: 0}
   smoothness: 1
 --- !u!1 &1529141003
 GameObject:
@@ -626,9 +625,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1529141004}
+  - component: {fileID: 1529141007}
   - component: {fileID: 1529141006}
   - component: {fileID: 1529141005}
-  - component: {fileID: 1529141007}
   m_Layer: 5
   m_Name: Image
   m_TagString: TitleImage(HeartDrumAttack)
@@ -652,7 +651,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -21, y: 51}
+  m_AnchoredPosition: {x: -14, y: 51}
   m_SizeDelta: {x: 1948.91, y: 413.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1529141005
@@ -684,7 +683,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 12
 --- !u!222 &1529141006
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -705,7 +704,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fbdbe8e11def9b40b4ed1fa1bf8708f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TitleFeadin
-  speed: 0.2
+  targetPosition: {x: 950, y: 750, z: 0}
+  smoothness: 0.001
+  alphaSpeedFI: 0.01
+  alphaSpeedFO: 0.01
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

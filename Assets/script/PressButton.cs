@@ -1,10 +1,10 @@
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.InputSyst
+using UnityEngine.InputSystem;
 
 public class PressButton : MonoBehaviour
 {
-    public float speed = 2.0f; // ç‚¹æ»…ã®é€Ÿã•
+    public float speed = 2.0f; // “_–Å‚Ì‘¬‚³
     //public Vector3 targetPosition = new Vector3(-21, 51, 0);
     public float smoothness = 0.1f;
     private bool isKeyPressed;
@@ -14,18 +14,18 @@ public class PressButton : MonoBehaviour
     void Start()
     {
         targetGraphic = GetComponent<MaskableGraphic>();
-        pressB = GameObject.FindGameObjectWithTag("PreasePressButton");//â†ã®ã‚¿ã‚°ã‚’å…¨ã¦å–å¾—
+        pressB = GameObject.FindGameObjectWithTag("PreasePressButton");//©‚Ìƒ^ƒO‚ğ‘S‚Äæ“¾
         //TitleHDA = GameObject.FindGameObjectWithTag("TitleImage(HeartDrumAttack)");
     }
     void Update()
     {
         if (targetGraphic != null)
         {
-            // ã‚µã‚¤ãƒ³æ³¢ã‚’ä½¿ã£ã¦ 0.0 ã€œ 1.0 ã®é–“ã‚’ã‚†ã‚‰ã‚†ã‚‰ã•ã›ã‚‹
-            // Time.time ã¯ã‚²ãƒ¼ãƒ é–‹å§‹ã‹ã‚‰ã®çµŒéæ™‚é–“
+            // ƒTƒCƒ“”g‚ğg‚Á‚Ä 0.0 ? 1.0 ‚ÌŠÔ‚ğ‚ä‚ç‚ä‚ç‚³‚¹‚é
+            // Time.time ‚ÍƒQ[ƒ€ŠJn‚©‚ç‚ÌŒo‰ßŠÔ
             float alpha = (Mathf.Sin(Time.time * speed) + 0.5f) / 2.0f;
 
-            // è‰²æƒ…å ±ã‚’å–å¾—ã—ã¦ã€ã‚¢ãƒ«ãƒ•ã‚¡å€¤ï¼ˆaï¼‰ã ã‘ã‚’æ›¸ãæ›ãˆã‚‹
+            // Fî•ñ‚ğæ“¾‚µ‚ÄAƒAƒ‹ƒtƒ@’liaj‚¾‚¯‚ğ‘‚«Š·‚¦‚é
             Color color = targetGraphic.color;
             color.a = alpha;
             targetGraphic.color = color;
@@ -33,9 +33,9 @@ public class PressButton : MonoBehaviour
         isKeyPressed = Keyboard.current != null && Keyboard.current.anyKey.wasPressedThisFrame;
         if (isKeyPressed==true)
         {
-            pressB.SetActive(false);//PleasePressButton tag éè¡¨ç¤º
+            pressB.SetActive(false);//PleasePressButton tag ”ñ•\¦
             //TitleHDA.transform.position = Vector3.Lerp(transform.position, targetPosition, smoothness);
-            Debug.Log("ã„ãšã‚Œã‹ã®ã‚­ãƒ¼ãŒæŠ¼ã•ã‚Œã¾ã—ãŸã€‚(PressButton)");
+            Debug.Log("‚¢‚¸‚ê‚©‚ÌƒL[‚ª‰Ÿ‚³‚ê‚Ü‚µ‚½B(PressButton)");
         }
     }
 }
