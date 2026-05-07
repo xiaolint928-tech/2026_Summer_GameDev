@@ -6,6 +6,7 @@ TagManager:
   tags:
   - TitleImage(HeartDrumAttack)
   - PreasePressButton
+  - Menu_UI
   layers:
   - Default
   - TransparentFX
