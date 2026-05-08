@@ -11,6 +11,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TitleNext.unity
     guid: b9291db080064ce43b96f56d91d3422f
+  - enabled: 1
+    path: Assets/Scenes/Continue.unity
+    guid: e33d39410f481d34a95def2162196f60
+  - enabled: 1
+    path: Assets/Scenes/Setting.unity
+    guid: 3af8350b92cb3f84dbca816f814cdb22
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
