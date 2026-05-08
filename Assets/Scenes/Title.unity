@@ -1290,7 +1290,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TitleFeadin
   alphaSpeedFI: 0.005
-  alphaSpeedFO: 0.005
+  alphaSpeedFO: 0.05
   Vec2_x: -22
   Vec2_y: 213
   firstButton: {fileID: 0}
