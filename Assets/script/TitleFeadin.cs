@@ -13,9 +13,9 @@ public class TitleFeadin : MonoBehaviour
     private float alpha = 0f;
     private bool isKeyPressed;
     private MaskableGraphic targetGraphic;
+    public GameObject firstButton;
     //GameObject TitleHDA;
     //GameObject[] ui;
-
     void Start()
     {
         targetGraphic = GetComponent<MaskableGraphic>();
