@@ -30,7 +30,7 @@ public class PressButton : MonoBehaviour
             color.a = alpha;
             targetGraphic.color = color;
         }
-        isKeyPressed = Keyboard.current != null && Keyboard.current.anyKey.wasPressedThisFrame;
+        isKeyPressed = Keyboard.current != null && Keyboard.current.spaceKey.wasPressedThisFrame;
         if (isKeyPressed==true)
         {
             pressB.SetActive(false);//PleasePressButton tag ”ñ•\Ž¦

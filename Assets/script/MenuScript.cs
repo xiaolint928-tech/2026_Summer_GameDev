@@ -16,11 +16,11 @@ public class MenuScript : MonoBehaviour
         Color color = targetGraphic.color;
         color.a = 0;
         targetGraphic.color = color;
-        DDelay(1.0f);
+        this.gameObject.SetActive(false);
     }
     void Update()
     {
-        isKeyPressed = Keyboard.current != null && Keyboard.current.anyKey.wasPressedThisFrame;
+        isKeyPressed = Keyboard.current != null && Keyboard.current.spaceKey.wasPressedThisFrame;
         if (isKeyPressed == true)
         {
             StartCoroutine(Feedin());

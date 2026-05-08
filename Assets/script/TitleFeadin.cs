@@ -13,9 +13,8 @@ public class TitleFeadin : MonoBehaviour
     private float alpha = 0f;
     private bool isKeyPressed;
     private MaskableGraphic targetGraphic;
-    public GameObject firstButton;
-    //GameObject TitleHDA;
-    //GameObject[] ui;
+    public GameObject[] UIs;
+    public float delaySeconds = 0.5f;
     void Start()
     {
         targetGraphic = GetComponent<MaskableGraphic>();
@@ -28,11 +27,16 @@ public class TitleFeadin : MonoBehaviour
     }
     void Update()
     {
-        isKeyPressed = Keyboard.current != null && Keyboard.current.anyKey.wasPressedThisFrame;
+        isKeyPressed = Keyboard.current != null && Keyboard.current.spaceKey.wasPressedThisFrame;
         if (isKeyPressed == true)
         {
             StopAllCoroutines();
             StartCoroutine(HandleSequence());
+            //for (int i = 0; i < 4; i++)
+            //{
+            //    UIs[i].gameObject.SetActive(true);
+                StartCoroutine(ShowUIsRoutine());
+            //}
         }
     }
     IEnumerator Feedin()
@@ -67,5 +71,19 @@ public class TitleFeadin : MonoBehaviour
         FIflag = false;
         StartCoroutine(Feedin());
 
+    }
+    IEnumerator ShowUIsRoutine()
+    {
+        // 配列の中身を一つずつ取り出す
+        foreach (GameObject ui in UIs)
+        {
+            if (ui != null)
+            {
+                ui.SetActive(true); // UIを表示
+                                    // ここで音を鳴らす処理を入れると、表示に合わせて音が鳴ります
+
+                yield return new WaitForSeconds(delaySeconds); // 指定した秒数だけ待つ
+            }
+        }
     }
 }

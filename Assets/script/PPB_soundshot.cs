@@ -13,8 +13,8 @@ public class PPB_soundshot : MonoBehaviour
 
     void Update()
     {
-        isKeyPressed = Keyboard.current != null && Keyboard.current.anyKey.wasPressedThisFrame;
-        if (isKeyPressed==true)
+        isKeyPressed = Keyboard.current != null && Keyboard.current.spaceKey.wasPressedThisFrame;
+        if (isKeyPressed == true)
         {
             audioSource.PlayOneShot(soundEffect);
         }
