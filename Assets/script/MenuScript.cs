@@ -20,13 +20,13 @@ public class MenuScript : MonoBehaviour
     }
     void Update()
     {
-        isKeyPressed = Keyboard.current != null && Keyboard.current.spaceKey.wasPressedThisFrame;
-        if (isKeyPressed == true)
-        {
+        //isKeyPressed = Keyboard.current != null && Keyboard.current.spaceKey.wasPressedThisFrame;
+        //if (isKeyPressed == true)
+        //{
             StartCoroutine(Feedin());
-        }
+    //}
 
-    }
+}
     IEnumerator Feedin()
     {
         while (alpha < 1 && FIflag == false)
