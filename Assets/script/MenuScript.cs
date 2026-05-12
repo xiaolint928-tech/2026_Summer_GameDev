@@ -10,8 +10,8 @@ public class MenuScript : MonoBehaviour
     private bool FIflag = false, FOflag = false;
     private float alpha = 0f;
     private MaskableGraphic targetGraphic;
-    void Start()
-    {
+    public float delayFI_ = 0.01f;
+    void Start()    {
         targetGraphic = GetComponent<MaskableGraphic>();
         Color color = targetGraphic.color;
         color.a = 0;
@@ -35,7 +35,7 @@ public class MenuScript : MonoBehaviour
             Color color = targetGraphic.color;
             color.a = alpha;
             targetGraphic.color = color;
-            yield return null;
+            yield return new WaitForSeconds(delayFI_);
         }
         FIflag = true;
     }

@@ -15,6 +15,7 @@ public class TitleFeadin : MonoBehaviour
     private MaskableGraphic targetGraphic;
     public GameObject[] UIs;
     public float delaySeconds = 0.5f;
+    public float delayFO=0.01f, delayFI=0.01f;
     void Start()
     {
         targetGraphic = GetComponent<MaskableGraphic>();
@@ -47,7 +48,7 @@ public class TitleFeadin : MonoBehaviour
             Color color = targetGraphic.color;
             color.a = alpha;
             targetGraphic.color = color;
-            yield return null;
+            yield return new WaitForSeconds(delayFI);
         }
         FIflag = true;
     }
@@ -59,7 +60,7 @@ public class TitleFeadin : MonoBehaviour
             Color color = targetGraphic.color;
             color.a = alpha;
             targetGraphic.color = color;
-            yield return null;
+            yield return new WaitForSeconds(delayFO);
         }
         FOflag = true;
     }

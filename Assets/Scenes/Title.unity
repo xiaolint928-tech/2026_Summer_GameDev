@@ -405,8 +405,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 892740f4dd12987419fd7bf927d3a3ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MenuScript
-  alphaSpeedFI: 0.000002
+  alphaSpeedFI: 0.0002
   alphaSpeedFO: 0.000001
+  delayFI_: 0.01
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -640,8 +641,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 892740f4dd12987419fd7bf927d3a3ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MenuScript
-  alphaSpeedFI: 0.000002
+  alphaSpeedFI: 0.0002
   alphaSpeedFO: 0.000001
+  delayFI_: 0.01
 --- !u!1 &797905306
 GameObject:
   m_ObjectHideFlags: 0
@@ -791,8 +793,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 892740f4dd12987419fd7bf927d3a3ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MenuScript
-  alphaSpeedFI: 0.000002
+  alphaSpeedFI: 0.0002
   alphaSpeedFO: 0.000001
+  delayFI_: 0.01
 --- !u!1 &959489928
 GameObject:
   m_ObjectHideFlags: 0
@@ -1277,7 +1280,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TitleFeadin
   alphaSpeedFI: 0.005
-  alphaSpeedFO: 0.005
+  alphaSpeedFO: 0.05
   Vec2_x: -22
   Vec2_y: 213
   UIs:
@@ -1286,6 +1289,8 @@ MonoBehaviour:
   - {fileID: 649334044}
   - {fileID: 797905306}
   delaySeconds: 0.5
+  delayFO: 0.01
+  delayFI: 0.01
 --- !u!114 &1529141008
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1590,8 +1595,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 892740f4dd12987419fd7bf927d3a3ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MenuScript
-  alphaSpeedFI: 0.000002
+  alphaSpeedFI: 0.0002
   alphaSpeedFO: 0.000001
+  delayFI_: 0.01
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
