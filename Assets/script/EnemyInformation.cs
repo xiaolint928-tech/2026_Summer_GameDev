@@ -12,7 +12,7 @@ public class ItemParam
     public int price;
 }
 
-public class EnemyInformation : MonoBehaviour
+public class EnemyInformation : ScriptableObject
 {
     //“G‚Ì–¼‘O
     public string EnemyName = "–¼–³‚µ‚Ì“G";
