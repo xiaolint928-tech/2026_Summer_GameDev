@@ -2,18 +2,19 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-[CreateAssetMenu(fileName = "Enemy_about",menuName = "EnemyInfo")]
+[CreateAssetMenu(fileName = "EnemyInfo",menuName = "Enemy_about/EnemyInfo")]
 
-[System.Serializable]
-public class ItemParam
-{
-    public int id;
-    public string itemName;
-    public int price;
-}
+//[System.Serializable]
+//public class ItemParam
+//{
+//    public int id;
+//    public string itemName;
+//    public int price;
+//}
 
 public class EnemyInformation : ScriptableObject
 {
+    public int EnemyID;
     //敵の名前
     public string EnemyName = "名無しの敵";
 
@@ -27,7 +28,7 @@ public class EnemyInformation : ScriptableObject
     public float EnemyDIF;
 
     //ノーツの来るタイミングの種類の数
-    public List<ItemParam> itemLists = new List<ItemParam>();
+    public List<PatternCategory> categories= new List<PatternCategory>();
 
     //ノーツの来る間隔
 

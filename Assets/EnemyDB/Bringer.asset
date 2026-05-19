@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ed19f46aaeea694798f48aae7a70137, type: 3}
+  m_Name: Bringer
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyInformation
+  EnemyID: 0
+  EnemyName: "\u30D6\u30EA\u30F3\u30AC\u30FC"
+  EnemyHP: 100
+  EnemySTR: 5
+  EnemyDIF: 0
+  categories:
+  - categoryName: "\u96D1\u9B5A"
+    patterns:
+    - patternName: "\u653B\u64831"
+      notes:
+      - timing: 1
+      - timing: 1
+      - timing: 1
+    - patternName: "\u653B\u64832"
+      notes:
+      - timing: 0.5
+      - timing: 0.5
+      - timing: 1
