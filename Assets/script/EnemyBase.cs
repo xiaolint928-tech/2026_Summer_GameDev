@@ -35,7 +35,6 @@ public class EnemyBase : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        currentHP_ = data_.EnemyHP;
+        
     }
 }
