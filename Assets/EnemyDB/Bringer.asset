@@ -13,20 +13,27 @@ MonoBehaviour:
   m_Name: Bringer
   m_EditorClassIdentifier: Assembly-CSharp::EnemyInformation
   EnemyID: 0
-  EnemyName: "\u30D6\u30EA\u30F3\u30AC\u30FC"
+  EnemyName: bringer
   EnemyHP: 100
   EnemySTR: 5
-  EnemyDIF: 0
+  EnemyDIF: 0.1
   categories:
-  - categoryName: "\u96D1\u9B5A"
+  - categoryName: mob
     patterns:
-    - patternName: "\u653B\u64831"
+    - patternName: Attack2
       notes:
       - timing: 1
       - timing: 1
+      - timing: 0.5
+  - categoryName: boss
+    patterns:
+    - patternName: Attack1
+      notes:
       - timing: 1
-    - patternName: "\u653B\u64832"
+      - timing: 0.5
+      - timing: 1
+    - patternName: Attack2
       notes:
       - timing: 0.5
-      - timing: 0.5
+      - timing: 1
       - timing: 1

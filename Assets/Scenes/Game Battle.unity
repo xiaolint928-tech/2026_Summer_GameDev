@@ -361,7 +361,7 @@ GameObject:
   - component: {fileID: 288118357}
   m_Layer: 0
   m_Name: Bringer-of-Death-SpritSheet_0
-  m_TagString: Enemy
+  m_TagString: Enemy-mob
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -454,10 +454,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BringerManager
   data_: {fileID: 11400000, guid: 45060e8988c3e6242b3becfe0634a6dc, type: 2}
   state: 0
-  currentHP_: 0
-  currentSTR_: 0
-  currentDIF_: 0
-  EnemyNotesInfo: 0
 --- !u!1 &486294924
 GameObject:
   m_ObjectHideFlags: 0

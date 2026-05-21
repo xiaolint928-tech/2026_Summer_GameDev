@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-[CreateAssetMenu(fileName = "EnemyInfo",menuName = "Enemy_about/EnemyInfo")]
+[CreateAssetMenu(menuName = "Enemy_about/EnemyInfo")]
 
 //[System.Serializable]
 //public class ItemParam
