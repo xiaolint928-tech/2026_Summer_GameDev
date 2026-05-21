@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyInformation
   EnemyID: 0
   EnemyName: bringer
-  EnemyHP: 90
+  EnemyHP: 100
   EnemySTR: 5
   EnemyDIF: 0.1
   categories:

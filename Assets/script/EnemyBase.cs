@@ -23,12 +23,12 @@ public class EnemyBase : MonoBehaviour
     protected float timeData_;
     /*やることリスト
      どちらが攻撃(Attack or Stay)
-     ScriptableObjectから読み込んだデータを用いて
-    ノーツを生成する
-    心臓の判定操作、判定からのダメージ計算、
-    伝達(JudgeManager)
+     (敵がAttackならば)ScriptableObjectから読み込んだデータを用いて
+    ノーツを生成する(EnemyBase)
+    心臓の判定操作、判定からのダメージ計算、伝達(JudgeManager)
     ステータス管理→HPなど(EnemyBase,PlayerManager)
-
+    アニメーション・表示・非表示
+    宝箱(報酬)
      */
 
     protected virtual void Start()
