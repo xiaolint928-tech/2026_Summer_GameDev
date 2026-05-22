@@ -47,9 +47,6 @@ public class PlayerManager : MonoBehaviour
         {
             Pstate = PlayerState.Stay;
         }
-        if (Keyboard.current.enterKey.wasPressedThisFrame)
-        {
-            Pstate = PlayerState.Attack;
-        }
+
     }
 }

@@ -53,7 +53,6 @@ public class EnemyBase : MonoBehaviour
             PlayerObject = GameObject.FindWithTag("Player");
             targetPlayer = PlayerObject.GetComponent<PlayerManager>();
         }
-
         currentHP_ = data_.EnemyHP;
         maxHP_ = currentHP_;
         Debug.Log(currentHP_);
@@ -81,13 +80,7 @@ public class EnemyBase : MonoBehaviour
     {
         if (targetPlayer.Pstate == PlayerManager.PlayerState.Attack)
         {
-            Debug.Log(Estate);
             Estate = EnemyState.Stay;
-            Debug.Log(Estate);
-        }
-        if (Keyboard.current.spaceKey.wasPressedThisFrame)
-        {
-            Estate = EnemyState.Attack;
         }
     }
 }
