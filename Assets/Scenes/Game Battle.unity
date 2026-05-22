@@ -454,7 +454,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BringerManager
   data_: {fileID: 11400000, guid: 45060e8988c3e6242b3becfe0634a6dc, type: 2}
-  state: 0
+  Estate: 0
+  targetPlayer: {fileID: 0}
 --- !u!95 &288118358
 Animator:
   serializedVersion: 7
@@ -628,10 +629,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8942925490989933264, guid: a4b4a6d32bcb19248a754d6602ffc7e4, type: 3}
+      propertyPath: m_GravityScale
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6323719953710832613, guid: a4b4a6d32bcb19248a754d6602ffc7e4, type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 1405661464}
   m_SourcePrefab: {fileID: 100100000, guid: a4b4a6d32bcb19248a754d6602ffc7e4, type: 3}
 --- !u!1 &749037462
 GameObject:
@@ -803,6 +811,25 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1405661457 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6323719953710832613, guid: a4b4a6d32bcb19248a754d6602ffc7e4, type: 3}
+  m_PrefabInstance: {fileID: 647976395}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1405661464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1405661457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b44d44f5c8da39045859547c54668e66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerManager
+  Pstate: 1
+  targetEnemy: {fileID: 0}
 --- !u!1 &1571585838
 GameObject:
   m_ObjectHideFlags: 0

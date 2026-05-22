@@ -1,15 +1,17 @@
 using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using static PlayerManager;
 
 public class EnemyBase : MonoBehaviour
 {
     [SerializeField] public EnemyInformation data_;
-     public enum EnemyState
+    public enum EnemyState
     {
         Stay,
         Attack
     }
-    public EnemyState state = EnemyState.Stay;//ステータス
+    public EnemyState Estate = EnemyState.Stay;//ステータス
     protected Animator animetor;//Animator
     protected int maxHP_;
     protected int currentHP_;
@@ -21,6 +23,10 @@ public class EnemyBase : MonoBehaviour
     protected Transform enemyPos_boss;
     protected float EnemyNotesInfo;
     protected float timeData_;
+    protected GameObject enemyObject_mob;
+    protected GameObject enemyObject_boss;
+    protected GameObject PlayerObject;
+    [SerializeField] private PlayerManager targetPlayer;
     /*やることリスト
      どちらが攻撃(Attack or Stay)
      (敵がAttackならば)ScriptableObjectから読み込んだデータを用いて
@@ -33,14 +39,21 @@ public class EnemyBase : MonoBehaviour
 
     protected virtual void Start()
     {
-        GameObject enemyObject_mob = GameObject.FindWithTag("Enemy-mob");
-        GameObject enemyObject_boss = GameObject.FindWithTag("Enemy-boss");
-        if (enemyObject_mob == null)
-        {
-            Debug.Log("enemyObject_mobが入っていない");
+        if (GameObject.FindWithTag("Enemy-mob")) {
+            enemyObject_mob = GameObject.FindWithTag("Enemy-mob");
+            enemyPos_mob = enemyObject_mob.transform;//一応敵の一取得
         }
-        enemyPos_mob = enemyObject_mob.transform;//一応敵の一取得
-        enemyPos_boss = enemyObject_boss.transform;//一応敵の一取得
+        else if (GameObject.FindWithTag("Enemy-boss"))
+        {
+            enemyObject_boss = GameObject.FindWithTag("Enemy-boss");
+            enemyPos_boss = enemyObject_boss.transform;//一応敵の一取得
+        }
+        if (GameObject.FindWithTag("Player"))
+        {
+            PlayerObject = GameObject.FindWithTag("Player");
+            targetPlayer = PlayerObject.GetComponent<PlayerManager>();
+        }
+
         currentHP_ = data_.EnemyHP;
         maxHP_ = currentHP_;
         Debug.Log(currentHP_);
@@ -50,11 +63,31 @@ public class EnemyBase : MonoBehaviour
         currentDIF_ = data_.EnemyDIF;
         maxDIF_ = currentDIF_;
         Debug.Log(currentDIF_);
+        if (targetPlayer != null)
+        {
+            if (targetPlayer.Pstate == PlayerManager.PlayerState.Stay)
+            {
+                Debug.Log(targetPlayer.Pstate);
+            }
+            else
+            {
+                Debug.Log("プレイヤーが見つからない。それかプレイヤーはAttackになっている。");
+            }
+        }
     }
 
     // Update is called once per frame
     protected virtual void Update()
     {
-        
+        if (targetPlayer.Pstate == PlayerManager.PlayerState.Attack)
+        {
+            Debug.Log(Estate);
+            Estate = EnemyState.Stay;
+            Debug.Log(Estate);
+        }
+        if (Keyboard.current.spaceKey.wasPressedThisFrame)
+        {
+            Estate = EnemyState.Attack;
+        }
     }
 }
