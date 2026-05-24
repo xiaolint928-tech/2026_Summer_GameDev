@@ -1,11 +1,14 @@
 using System;
 using UnityEngine;
+using System.Collections;
 using UnityEngine.InputSystem;
 using static PlayerManager;
 
 public class EnemyBase : MonoBehaviour
 {
     [SerializeField] public EnemyInformation data_;
+    private NotesManager notesManager;
+    public EnemyInformation Data => data_;
     public enum EnemyState
     {
         Stay,
@@ -22,7 +25,7 @@ public class EnemyBase : MonoBehaviour
     protected Transform enemyPos_mob;
     protected Transform enemyPos_boss;
     protected float EnemyNotesInfo;
-    protected float timeData_;
+    protected float timingData_;
     protected GameObject enemyObject_mob;
     protected GameObject enemyObject_boss;
     protected GameObject PlayerObject;
@@ -30,7 +33,7 @@ public class EnemyBase : MonoBehaviour
     /*やることリスト
      どちらが攻撃(Attack or Stay)
      (敵がAttackならば)ScriptableObjectから読み込んだデータを用いて
-    ノーツを生成する(EnemyBase)
+    ノーツを生成する,移動からの削除まで(NotesManager,EnemyBase)
     心臓の判定操作、判定からのダメージ計算、伝達(JudgeManager)
     ステータス管理→HPなど(EnemyBase,PlayerManager)
     アニメーション・表示・非表示
@@ -39,6 +42,11 @@ public class EnemyBase : MonoBehaviour
 
     protected virtual void Start()
     {
+        notesManager = FindAnyObjectByType<NotesManager>();
+        if (notesManager == null)
+        {
+            Debug.LogError("シーン内に NotesManager が見つかりません。");
+        }
         if (GameObject.FindWithTag("Enemy-mob")) {
             enemyObject_mob = GameObject.FindWithTag("Enemy-mob");
             enemyPos_mob = enemyObject_mob.transform;//一応敵の一取得
@@ -81,6 +89,10 @@ public class EnemyBase : MonoBehaviour
         if (targetPlayer.Pstate == PlayerManager.PlayerState.Attack)
         {
             Estate = EnemyState.Stay;
+        }
+        if (Keyboard.current.spaceKey.wasPressedThisFrame)
+        {
+            StartCoroutine(notesManager.CapsuleInst());
         }
     }
 }

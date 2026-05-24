@@ -20,7 +20,7 @@ MonoBehaviour:
   categories:
   - categoryName: mob
     patterns:
-    - patternName: Attack2
+    - patternName: Attack
       notes:
       - timing: 1
       - timing: 1

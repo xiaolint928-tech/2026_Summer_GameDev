@@ -9,6 +9,7 @@ TagManager:
   - Menu_UI
   - Enemy-mob
   - Enemy-boss
+  - notes
   layers:
   - Default
   - TransparentFX
