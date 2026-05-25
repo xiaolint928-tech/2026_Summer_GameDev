@@ -28,7 +28,7 @@ public class EnemyInformation : ScriptableObject
     public float EnemyDIF;
 
     //ノーツの来るタイミングの種類の数
-    public List<PatternCategory> categories= new List<PatternCategory>();
+    public List<PatternCategory> categories = new List<PatternCategory>();
 
     //ノーツの来る間隔
 

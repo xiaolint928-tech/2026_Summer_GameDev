@@ -45,11 +45,8 @@ public class PlayerManager : MonoBehaviour
     {
         if (targetEnemy.Estate == EnemyBase.EnemyState.Attack)
         {
-            Pstate = PlayerState.Stay;
+            Pstate = PlayerState.Stay;//敵ステータスがAttackならばこちらのScriptをStayにする。
         }
-        if (Keyboard.current.enterKey.wasPressedThisFrame)
-        {
-            Pstate = PlayerState.Attack;
-        }
+
     }
 }

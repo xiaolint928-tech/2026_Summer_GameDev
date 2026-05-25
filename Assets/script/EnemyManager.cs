@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BringerManager : EnemyBase
+public class EnemyManager : EnemyBase
 {
     //‰½‚à‘‚©‚È‚­‚Ä‚à‘åä•v
 }
