@@ -7,8 +7,6 @@ public class NotesManager : MonoBehaviour
 {
     public GameObject CapsuleObject;
     private GameObject FindEnemy;
-    private List<GameObject> capsuleclone_l = new List<GameObject>();
-    private List<GameObject> capsuleclone_r = new List<GameObject>();
     private int ListNum_;
     private EnemyInformation enemyData;
     [SerializeField] private float reTime = 0.01f;
@@ -49,6 +47,8 @@ public class NotesManager : MonoBehaviour
     }
     public IEnumerator CapsuleInst()
     {
+        List<GameObject> capsuleclone_l = new List<GameObject>();
+        List<GameObject> capsuleclone_r = new List<GameObject>();
         // データが正常に読み込めていない場合は生成処理を行わない
         if (enemyData == null || ListNum_ == 0)
         {
@@ -61,33 +61,29 @@ public class NotesManager : MonoBehaviour
         {
             float TimingData_ = enemyData.categories[0].patterns[0].notes[i].timing;
             //ノーツ生成
-            capsuleclone_l[i]=Instantiate(CapsuleObject, spawnPosition_l, Quaternion.identity);
+            capsuleclone_l.Add(Instantiate(CapsuleObject, spawnPosition_l, Quaternion.identity));
             StartCoroutine(routine_l(i));
-            capsuleclone_r[i] = Instantiate(CapsuleObject, spawnPosition_r, Quaternion.identity);
+            capsuleclone_r.Add(Instantiate(CapsuleObject, spawnPosition_r, Quaternion.identity));
             StartCoroutine(routine_r(i));
             yield return new WaitForSeconds(TimingData_);
         }
-    }
-    private IEnumerator routine_l(int i)
+    IEnumerator routine_l(int i)
     {
-        Vector3 spawnPosition_l = new Vector3(-9.16f, -3.52f, -0.02f);
-        while (spawnPosition_l.x < 0.00)
+        while (capsuleclone_l[i].transform.position.x < 0.00)
         {
-            spawnPosition_l.x += NotesSpeedGain *reTime;
-            //transform.position = spawnPosition_l;
+            capsuleclone_l[i].transform.position += new Vector3(NotesSpeedGain, 0, 0);
             yield return new WaitForSeconds(reTime);
         }
         Destroy(capsuleclone_l[i]);
     }
-    private IEnumerator routine_r(int i)
+    IEnumerator routine_r(int i)
     {
-        Vector3 spawnPosition_r = new Vector3(9.08f, -3.52f, -0.02f);
-        while (spawnPosition_r.x > 0.00)
+        while (capsuleclone_r[i].transform.position.x > 0.00)
         {
-            spawnPosition_r.x -= NotesSpeedGain * Time.deltaTime;
-            //transform.position = spawnPosition_r;
+            capsuleclone_r[i].transform.position += new Vector3(-NotesSpeedGain, 0, 0);
             yield return new WaitForSeconds(reTime);
         }
         Destroy(capsuleclone_r[i]);
+    }
     }
 }
