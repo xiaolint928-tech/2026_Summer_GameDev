@@ -1,16 +1,18 @@
 using UnityEngine;
 using System.Collections;
+using NUnit.Framework;
+using System.Collections.Generic;
 
 public class NotesManager : MonoBehaviour
 {
     public GameObject CapsuleObject;
     private GameObject FindEnemy;
-    private GameObject capsuleclone_l;
-    private GameObject capsuleclone_r;
+    private List<GameObject> capsuleclone_l = new List<GameObject>();
+    private List<GameObject> capsuleclone_r = new List<GameObject>();
     private int ListNum_;
     private EnemyInformation enemyData;
     [SerializeField] private float reTime = 0.01f;
-    [SerializeField] private float NotesSpeedGain = 0.01f;
+    [SerializeField] private float NotesSpeedGain = 0.1f;
     void Start()
     {
         if (GameObject.FindWithTag("Enemy-mob"))
@@ -54,30 +56,30 @@ public class NotesManager : MonoBehaviour
             yield break;
         }
         Vector3 spawnPosition_l = new Vector3(-9.16f, -3.52f, -0.02f);
-        Vector3 spawnPosition_r = new Vector3(9.08f, -3.52f, -0.02f);
-        for (int i = 0; i < ListNum_; i++)
+        Vector3 spawnPosition_r = new Vector3(9.16f, -3.52f, -0.02f);
+        for (int i = 0;i < ListNum_;i++)
         {
             float TimingData_ = enemyData.categories[0].patterns[0].notes[i].timing;
             //ƒm[ƒc¶¬
-            capsuleclone_l = Instantiate(CapsuleObject, spawnPosition_l, Quaternion.identity);
-            StartCoroutine(routine_l());
-            capsuleclone_r = Instantiate(CapsuleObject, spawnPosition_r, Quaternion.identity);
-            StartCoroutine(routine_r());
+            capsuleclone_l[i]=Instantiate(CapsuleObject, spawnPosition_l, Quaternion.identity);
+            StartCoroutine(routine_l(i));
+            capsuleclone_r[i] = Instantiate(CapsuleObject, spawnPosition_r, Quaternion.identity);
+            StartCoroutine(routine_r(i));
             yield return new WaitForSeconds(TimingData_);
         }
     }
-    private IEnumerator routine_l()
+    private IEnumerator routine_l(int i)
     {
         Vector3 spawnPosition_l = new Vector3(-9.16f, -3.52f, -0.02f);
         while (spawnPosition_l.x < 0.00)
         {
-            spawnPosition_l.x += NotesSpeedGain;
+            spawnPosition_l.x += NotesSpeedGain *reTime;
             //transform.position = spawnPosition_l;
             yield return new WaitForSeconds(reTime);
         }
-        Destroy(capsuleclone_l);
+        Destroy(capsuleclone_l[i]);
     }
-    private IEnumerator routine_r()
+    private IEnumerator routine_r(int i)
     {
         Vector3 spawnPosition_r = new Vector3(9.08f, -3.52f, -0.02f);
         while (spawnPosition_r.x > 0.00)
@@ -86,6 +88,6 @@ public class NotesManager : MonoBehaviour
             //transform.position = spawnPosition_r;
             yield return new WaitForSeconds(reTime);
         }
-        Destroy(capsuleclone_r);
+        Destroy(capsuleclone_r[i]);
     }
 }
