@@ -69,7 +69,7 @@ public class NotesManager : MonoBehaviour
         }
     IEnumerator routine_l(int i)
     {
-        while (capsuleclone_l[i].transform.position.x < 0.00)
+        while (capsuleclone_l[i].transform.position.x < 0.01)
         {
             capsuleclone_l[i].transform.position += new Vector3(NotesSpeedGain, 0, 0);
             yield return new WaitForSeconds(reTime);
@@ -78,7 +78,7 @@ public class NotesManager : MonoBehaviour
     }
     IEnumerator routine_r(int i)
     {
-        while (capsuleclone_r[i].transform.position.x > 0.00)
+        while (capsuleclone_r[i].transform.position.x > -0.01)
         {
             capsuleclone_r[i].transform.position += new Vector3(-NotesSpeedGain, 0, 0);
             yield return new WaitForSeconds(reTime);
