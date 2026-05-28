@@ -62,11 +62,11 @@ public class NotesManager : MonoBehaviour
         {
             float TimingData_ = enemyData.categories[0].patterns[0].notes[i].timing;
             //ÉmÅ[Écê∂ê¨
+            yield return new WaitForSeconds(TimingData_);
             capsuleclone_l.Add(Instantiate(CapsuleObject, spawnPosition_l, Quaternion.identity));
             StartCoroutine(routine_l(i));
             capsuleclone_r.Add(Instantiate(CapsuleObject_JudgeNull, spawnPosition_r, Quaternion.identity));
             StartCoroutine(routine_r(i));
-            yield return new WaitForSeconds(TimingData_);
         }
     IEnumerator routine_l(int i)
     {

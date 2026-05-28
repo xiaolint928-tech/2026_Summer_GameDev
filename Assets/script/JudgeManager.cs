@@ -20,19 +20,19 @@ public class JudgeManager : MonoBehaviour
                 {
                     if (Keyboard.current.enterKey.wasPressedThisFrame)
                     {
-                        Debug.Log("Enterキーが押された。-ColliderOut_"); 
+                        Debug.Log("Collider   Out collision"); 
                         yield break;
                     }
                     yield return new WaitForSeconds(reTime);
                 }
             }
-            if (ColliderIn_.IsTouching(collision))
+            else if (ColliderIn_.IsTouching(collision))
             {
                 while (ColliderIn_.IsTouching(collision))
                 {
                     if (Keyboard.current.enterKey.wasPressedThisFrame)
                     {
-                        Debug.Log("Enterキーが押された。-ColliderIn_");
+                        Debug.Log("Collider   In collision");
                         yield break;
                     }
                     yield return new WaitForSeconds(reTime);
