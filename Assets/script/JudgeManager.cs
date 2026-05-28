@@ -1,4 +1,6 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class JudgeManager : MonoBehaviour
 {
@@ -12,17 +14,37 @@ public class JudgeManager : MonoBehaviour
     //}
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (ColliderOut_.IsTouching(collision))
+        StartCoroutine(FineJudgment());
+        IEnumerator FineJudgment()
         {
-            Debug.Log("外側のコライダーに入った");
-        }
-        else if (ColliderIn_.IsTouching(collision))
-        {
-            Debug.Log("内側のコライダーに入った");
-        }
-        else
-        {
-            Debug.Log("どちらのコライダーにも入っていない");
+            if (ColliderOut_.IsTouching(collision))
+            {
+                Debug.Log("外側のコライダーに入った");
+                while (ColliderOut_.IsTouching(collision))
+                {
+                    if (Keyboard.current.enterKey.wasPressedThisFrame)
+                    {
+                        Debug.Log("Enterキーが押された。-ColliderOut_");
+                        yield return new WaitForSeconds(0.01f);
+                    }
+                }
+            }
+            if (ColliderIn_.IsTouching(collision))
+            {
+                while (ColliderIn_.IsTouching(collision))
+                {
+                    if (Keyboard.current.enterKey.wasPressedThisFrame)
+                    {
+                        Debug.Log("Enterキーが押された。-ColliderIn_");
+                        yield return new WaitForSeconds(0.01f);
+                    }
+                }
+            }
+            else
+            {
+                Debug.Log("miss");
+            }
+
         }
     }
 }
