@@ -6,6 +6,7 @@ using System.Collections.Generic;
 public class NotesManager : MonoBehaviour
 {
     public GameObject CapsuleObject;
+    public GameObject CapsuleObject_JudgeNull;
     private GameObject FindEnemy;
     private int ListNum_;
     private EnemyInformation enemyData;
@@ -63,7 +64,7 @@ public class NotesManager : MonoBehaviour
             //ÉmÅ[Écê∂ê¨
             capsuleclone_l.Add(Instantiate(CapsuleObject, spawnPosition_l, Quaternion.identity));
             StartCoroutine(routine_l(i));
-            capsuleclone_r.Add(Instantiate(CapsuleObject, spawnPosition_r, Quaternion.identity));
+            capsuleclone_r.Add(Instantiate(CapsuleObject_JudgeNull, spawnPosition_r, Quaternion.identity));
             StartCoroutine(routine_r(i));
             yield return new WaitForSeconds(TimingData_);
         }
