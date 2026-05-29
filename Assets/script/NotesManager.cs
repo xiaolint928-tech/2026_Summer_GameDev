@@ -12,6 +12,9 @@ public class NotesManager : MonoBehaviour
     private EnemyInformation enemyData;
     [SerializeField] private float reTime = 0.01f;
     [SerializeField] private float NotesSpeedGain = 0.1f;
+    [SerializeField] private float speed_ = 5.0f;
+    public Transform NotesTargetPos;
+    public Transform NotesTargetPos2;
     void Start()
     {
         if (GameObject.FindWithTag("Enemy-mob"))
@@ -58,7 +61,7 @@ public class NotesManager : MonoBehaviour
         }
         Vector3 spawnPosition_l = new Vector3(-9.16f, -3.52f, -0.02f);
         Vector3 spawnPosition_r = new Vector3(9.16f, -3.52f, -0.02f);
-        for (int i = 0;i < ListNum_;i++)
+        for (int i = 0; i < ListNum_; i++)
         {
             float TimingData_ = enemyData.categories[0].patterns[0].notes[i].timing;
             //ƒm[ƒc¶¬
@@ -68,23 +71,35 @@ public class NotesManager : MonoBehaviour
             capsuleclone_r.Add(Instantiate(CapsuleObject_JudgeNull, spawnPosition_r, Quaternion.identity));
             StartCoroutine(routine_r(i));
         }
-    IEnumerator routine_l(int i)
-    {
-        while (capsuleclone_l[i].transform.position.x < 0.01)
+        IEnumerator routine_l(int i)
         {
-            capsuleclone_l[i].transform.position += new Vector3(NotesSpeedGain, 0, 0);
-            yield return new WaitForSeconds(reTime);
+            while (capsuleclone_l[i].transform.position.x <= 0.00)
+            {
+            capsuleclone_l[i].transform.position = Vector3.Lerp(capsuleclone_l[i].transform.position, NotesTargetPos.position, Time.deltaTime * speed_);
+                yield return new WaitForSeconds(reTime);
+            }
+                Destroy(capsuleclone_l[i]);
+            //while (capsuleclone_l[i].transform.position.x < 0.01)
+            //{
+            //    capsuleclone_l[i].transform.position += new Vector3(NotesSpeedGain, 0, 0);
+            //    yield return new WaitForSeconds(reTime);
+            //}
+            //Destroy(capsuleclone_l[i]);
         }
-        Destroy(capsuleclone_l[i]);
-    }
-    IEnumerator routine_r(int i)
-    {
-        while (capsuleclone_r[i].transform.position.x > -0.01)
+        IEnumerator routine_r(int i)
         {
-            capsuleclone_r[i].transform.position += new Vector3(-NotesSpeedGain, 0, 0);
-            yield return new WaitForSeconds(reTime);
+            while (capsuleclone_r[i].transform.position.x >= 0.00)
+            {
+            capsuleclone_r[i].transform.position = Vector3.Lerp(capsuleclone_r[i].transform.position, NotesTargetPos2.position, Time.deltaTime * speed_);
+                yield return new WaitForSeconds(reTime);
+            }
+                Destroy(capsuleclone_r[i]);
+            //while (capsuleclone_r[i].transform.position.x > -0.01)
+            //{
+            //    capsuleclone_r[i].transform.position += new Vector3(-NotesSpeedGain, 0, 0);
+            //    yield return new WaitForSeconds(reTime);
+            //}
+            //Destroy(capsuleclone_r[i]);
         }
-        Destroy(capsuleclone_r[i]);
-    }
     }
 }

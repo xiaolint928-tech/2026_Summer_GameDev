@@ -22,9 +22,9 @@ MonoBehaviour:
     patterns:
     - patternName: Attack
       notes:
-      - timing: 1
-      - timing: 1
+      - timing: 0
       - timing: 0.5
+      - timing: 0.25
   - categoryName: boss
     patterns:
     - patternName: Attack1

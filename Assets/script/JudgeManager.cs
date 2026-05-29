@@ -14,36 +14,44 @@ public class JudgeManager : MonoBehaviour
         StartCoroutine(FineJudgment());
         IEnumerator FineJudgment()
         {
-            if (ColliderOut_.IsTouching(collision))
-            {
-                while (ColliderOut_.IsTouching(collision))
+            bool HitFlgOut = false;
+            bool HitFlgIn = false;
+            //if (Keyboard.current.enterKey.isPressed)
+            //{
+                if (ColliderOut_.IsTouching(collision))
                 {
-                    if (Keyboard.current.enterKey.wasPressedThisFrame)
+                    while (ColliderOut_.IsTouching(collision))
                     {
-                        Debug.Log("Collider   Out collision"); 
-                        yield break;
+                        if (Keyboard.current.enterKey.wasPressedThisFrame)
+                        {
+                HitFlgOut = true;
+                            Debug.Log("Collider   Out collision");
+                            yield break;
+                        }
+                        yield return new WaitForSeconds(reTime);
                     }
-                    yield return new WaitForSeconds(reTime);
                 }
-            }
-            else if (ColliderIn_.IsTouching(collision))
-            {
-                while (ColliderIn_.IsTouching(collision))
+                else if (ColliderIn_.IsTouching(collision))
                 {
-                    if (Keyboard.current.enterKey.wasPressedThisFrame)
+                    while (ColliderIn_.IsTouching(collision))
                     {
-                        Debug.Log("Collider   In collision");
-                        yield break;
+                        if (Keyboard.current.enterKey.wasPressedThisFrame)
+                        {
+                    HitFlgIn = true;
+                            Debug.Log("Collider   In collision");
+                            yield break;
+                        }
+                        yield return new WaitForSeconds(reTime);
                     }
-                    yield return new WaitForSeconds(reTime);
                 }
-            }
-            else
+                yield return new WaitForSeconds(reTime);
+            //}
+
+            if(HitFlgOut != true && HitFlgIn != true)
             {
                 Debug.Log("miss");
                 yield break;
             }
-
         }
     }
 }
