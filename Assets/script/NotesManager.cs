@@ -73,33 +73,33 @@ public class NotesManager : MonoBehaviour
         }
         IEnumerator routine_l(int i)
         {
-            while (capsuleclone_l[i].transform.position.x <= 0.00)
-            {
-            capsuleclone_l[i].transform.position = Vector3.Lerp(capsuleclone_l[i].transform.position, NotesTargetPos.position, Time.deltaTime * speed_);
-                yield return new WaitForSeconds(reTime);
-            }
-                Destroy(capsuleclone_l[i]);
-            //while (capsuleclone_l[i].transform.position.x < 0.01)
+            //while (capsuleclone_l[i].transform.position.x <= 0.00)
             //{
-            //    capsuleclone_l[i].transform.position += new Vector3(NotesSpeedGain, 0, 0);
+            //capsuleclone_l[i].transform.position = Vector3.Lerp(capsuleclone_l[i].transform.position, NotesTargetPos.position, Time.deltaTime * speed_);
             //    yield return new WaitForSeconds(reTime);
             //}
-            //Destroy(capsuleclone_l[i]);
+            //    Destroy(capsuleclone_l[i]);
+            while (capsuleclone_l[i].transform.position.x < 0.01)
+            {
+                capsuleclone_l[i].transform.position += new Vector3(NotesSpeedGain, 0, 0);
+                yield return new WaitForSeconds(reTime);
+            }
+            Destroy(capsuleclone_l[i]);
         }
         IEnumerator routine_r(int i)
         {
-            while (capsuleclone_r[i].transform.position.x >= 0.00)
-            {
-            capsuleclone_r[i].transform.position = Vector3.Lerp(capsuleclone_r[i].transform.position, NotesTargetPos2.position, Time.deltaTime * speed_);
-                yield return new WaitForSeconds(reTime);
-            }
-                Destroy(capsuleclone_r[i]);
-            //while (capsuleclone_r[i].transform.position.x > -0.01)
+            //while (capsuleclone_r[i].transform.position.x >= 0.00)
             //{
-            //    capsuleclone_r[i].transform.position += new Vector3(-NotesSpeedGain, 0, 0);
+            //capsuleclone_r[i].transform.position = Vector3.Lerp(capsuleclone_r[i].transform.position, NotesTargetPos2.position, Time.deltaTime * speed_);
             //    yield return new WaitForSeconds(reTime);
             //}
-            //Destroy(capsuleclone_r[i]);
+            //    Destroy(capsuleclone_r[i]);
+            while (capsuleclone_r[i].transform.position.x > -0.01)
+            {
+                capsuleclone_r[i].transform.position += new Vector3(-NotesSpeedGain, 0, 0);
+                yield return new WaitForSeconds(reTime);
+            }
+            Destroy(capsuleclone_r[i]);
         }
     }
 }
