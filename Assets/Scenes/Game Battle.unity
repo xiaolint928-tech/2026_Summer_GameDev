@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 70274309}
   - component: {fileID: 70274308}
   - component: {fileID: 70274305}
+  - component: {fileID: 70274310}
   - component: {fileID: 70274307}
   m_Layer: 0
   m_Name: Drum_judge
@@ -226,9 +227,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NotesManager
   ColliderOut_: {fileID: 70274309}
-  ColliderIn_: {fileID: 70274308}
   cpsl: {fileID: 7524640036349909968, guid: 6b5f10f251b78b440ad82238331b11f2, type: 3}
   reTime: 0.01
+  HitFlgOut: 0
 --- !u!61 &70274308
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -321,6 +322,22 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 4.006872, y: 4.44}
   m_EdgeRadius: 0
+--- !u!114 &70274310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 70274304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac14a4f1092766740aa7869d8b2b02ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::JudgeManager_in
+  ColliderIn_: {fileID: 70274308}
+  cpsl: {fileID: 7524640036349909968, guid: 6b5f10f251b78b440ad82238331b11f2, type: 3}
+  reTime: 0.01
+  HitFlgIn: 0
 --- !u!1 &259714904
 GameObject:
   m_ObjectHideFlags: 0

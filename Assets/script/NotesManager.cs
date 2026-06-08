@@ -15,6 +15,8 @@ public class NotesManager : MonoBehaviour
     [SerializeField] private float speed_ = 5.0f;
     public Transform NotesTargetPos;
     public Transform NotesTargetPos2;
+    private JudgeManager_in judgeManagerIn;
+    private JudgeManager_out judgeManagerOut;
     void Start()
     {
         if (GameObject.FindWithTag("Enemy-mob"))
@@ -84,6 +86,8 @@ public class NotesManager : MonoBehaviour
                 capsuleclone_l[i].transform.position += new Vector3(NotesSpeedGain, 0, 0);
                 yield return new WaitForSeconds(reTime);
             }
+            //StopCoroutine(judgeManagerIn.FineJudgment_in(null));
+            //StopCoroutine(judgeManagerOut.FineJudgment_out(null));
             Destroy(capsuleclone_l[i]);
         }
         IEnumerator routine_r(int i)
