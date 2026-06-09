@@ -13,6 +13,7 @@ public class NotesManager : MonoBehaviour
     [SerializeField] private float reTime = 0.01f;
     [SerializeField] private float NotesSpeedGain = 0.1f;
     [SerializeField] private float speed_ = 5.0f;
+    [SerializeField] private float gain_ = 0.1f;
     public Transform NotesTargetPos;
     public Transform NotesTargetPos2;
     private JudgeManager_in judgeManagerIn;
@@ -83,8 +84,8 @@ public class NotesManager : MonoBehaviour
             //    Destroy(capsuleclone_l[i]);
             while (capsuleclone_l[i].transform.position.x < 0.01)
             {
-                capsuleclone_l[i].transform.position += new Vector3(NotesSpeedGain, 0, 0);
-                yield return new WaitForSeconds(reTime);
+                capsuleclone_l[i].transform.position += new Vector3(NotesSpeedGain, 0, 0) * Time.deltaTime * gain_;
+            yield return new WaitForSeconds(reTime);
             }
             //StopCoroutine(judgeManagerIn.FineJudgment_in(null));
             //StopCoroutine(judgeManagerOut.FineJudgment_out(null));
@@ -100,8 +101,8 @@ public class NotesManager : MonoBehaviour
             //    Destroy(capsuleclone_r[i]);
             while (capsuleclone_r[i].transform.position.x > -0.01)
             {
-                capsuleclone_r[i].transform.position += new Vector3(-NotesSpeedGain, 0, 0);
-                yield return new WaitForSeconds(reTime);
+                capsuleclone_r[i].transform.position += new Vector3(-NotesSpeedGain, 0, 0)*Time.deltaTime * gain_;
+            yield return new WaitForSeconds(reTime);
             }
             Destroy(capsuleclone_r[i]);
         }
