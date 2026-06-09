@@ -51,6 +51,7 @@ public class JudgeManager_in : MonoBehaviour
         }
 
         HitFlgIn = false;
+        hitflgout.HitFlgOut = false;
 
         yield return new WaitForSeconds(reTime);
     }
