@@ -84,8 +84,9 @@ public class NotesManager : MonoBehaviour
             //    Destroy(capsuleclone_l[i]);
             while (capsuleclone_l[i].transform.position.x < 0.01)
             {
-                capsuleclone_l[i].transform.position += new Vector3(NotesSpeedGain, 0, 0) * Time.deltaTime * gain_;
-            yield return new WaitForSeconds(reTime);
+                capsuleclone_l[i].transform.position += new Vector3(NotesSpeedGain, 0, 0)/**Time.deltaTime * gain_*/;
+                //yield return new WaitForSeconds(reTime);
+                yield return null;
             }
             //StopCoroutine(judgeManagerIn.FineJudgment_in(null));
             //StopCoroutine(judgeManagerOut.FineJudgment_out(null));
@@ -101,8 +102,9 @@ public class NotesManager : MonoBehaviour
             //    Destroy(capsuleclone_r[i]);
             while (capsuleclone_r[i].transform.position.x > -0.01)
             {
-                capsuleclone_r[i].transform.position += new Vector3(-NotesSpeedGain, 0, 0)*Time.deltaTime * gain_;
-            yield return new WaitForSeconds(reTime);
+                capsuleclone_r[i].transform.position += new Vector3(-NotesSpeedGain, 0, 0)/**Time.deltaTime * gain_*/;
+                //yield return new WaitForSeconds(reTime);
+                yield return null;
             }
             Destroy(capsuleclone_r[i]);
         }
