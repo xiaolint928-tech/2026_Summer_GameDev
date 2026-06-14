@@ -8,7 +8,7 @@ public class JudgeManager_in : MonoBehaviour
     public Collider2D ColliderIn_;
     [SerializeField] private GameObject cpsl;
     [SerializeField] private float reTime = 0.01f;
-    public         bool HitFlgIn = false;
+    public bool HitFlgIn = false;
     public JudgeManager_out hitflgout;   
 
     private void Start()

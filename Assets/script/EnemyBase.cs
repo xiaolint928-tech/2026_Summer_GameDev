@@ -31,10 +31,12 @@ public class EnemyBase : MonoBehaviour
     protected GameObject PlayerObject;
     [SerializeField] private PlayerManager targetPlayer;
     /*やることリスト
-     どちらが攻撃(Attack or Stay)
-     (敵がAttackならば)ScriptableObjectから読み込んだデータを用いて
+     どちらが攻撃(Attack or Stay)〇
+     (敵がAttackならば)ScriptableObjectから読み込んだデータを用いて〇
     ノーツを生成する,移動からの削除まで(NotesManager,EnemyBase)
-    心臓の判定操作、判定からのダメージ計算、伝達(JudgeManager)
+    心臓の判定操作〇
+    判定からのダメージ計算　
+    伝達(JudgeManager)
     ステータス管理→HPなど(EnemyBase,PlayerManager)
     アニメーション・表示・非表示
     宝箱(報酬)
@@ -42,6 +44,12 @@ public class EnemyBase : MonoBehaviour
 
     protected virtual void Start()
     {
+        // 1. V-Syncによる自動固定を無効化する
+        QualitySettings.vSyncCount = 0;
+
+        // 2. 目標フレームレートを「60」に固定する（144などに変更も可能）
+        Application.targetFrameRate = 60;
+
         notesManager = FindAnyObjectByType<NotesManager>();
         if (notesManager == null)
         {
@@ -78,7 +86,7 @@ public class EnemyBase : MonoBehaviour
             }
             else
             {
-                Debug.Log("プレイヤーが見つからない。それかプレイヤーはAttackになっている。");
+                Debug.Log("プレイヤーはAttackになっている。");
             }
         }
     }
@@ -89,10 +97,6 @@ public class EnemyBase : MonoBehaviour
         if (targetPlayer.Pstate == PlayerManager.PlayerState.Attack)
         {
             Estate = EnemyState.Stay;
-        }
-        if (Keyboard.current.spaceKey.wasPressedThisFrame)
-        {
-            StartCoroutine(notesManager.CapsuleInst());
         }
     }
 }
