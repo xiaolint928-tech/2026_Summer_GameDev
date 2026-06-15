@@ -9,6 +9,7 @@ public class JudgeManager_in : MonoBehaviour
     [SerializeField] private GameObject cpsl;
     [SerializeField] private float reTime = 0.01f;
     public bool HitFlgIn = false;
+    public bool MissFlg = false;
     public JudgeManager_out hitflgout;   
 
     private void Start()
@@ -34,17 +35,18 @@ public class JudgeManager_in : MonoBehaviour
                 if (Keyboard.current.enterKey.wasPressedThisFrame)
                 {
                     HitFlgIn = true;
-                    Debug.Log("Collider   In collision");
+                    //Debug.Log("Collider   In collision");
                     yield break;
                 }
-                yield return new WaitForSeconds(reTime);
+                yield return null;
             }
 
             if (hitflgout != null)
             {
                 if (hitflgout.HitFlgOut != true && HitFlgIn != true)
                 {
-                    Debug.Log("miss");
+                    MissFlg = true;
+                    //Debug.Log("miss");
                     yield break;
                 }
             }
@@ -52,7 +54,8 @@ public class JudgeManager_in : MonoBehaviour
 
         HitFlgIn = false;
         hitflgout.HitFlgOut = false;
+        MissFlg = false;
 
-        yield return new WaitForSeconds(reTime);
+    yield return new WaitForSeconds(reTime);
     }
 }

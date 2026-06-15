@@ -25,6 +25,9 @@ public class PlayerManager : MonoBehaviour
     }
     public PlayerState Pstate = PlayerState.Attack;
 
+    public JudgeManager_in _In;
+    public JudgeManager_out _Out;
+
     protected Animator animator;
 
     [SerializeField] private EnemyBase targetEnemy;
@@ -54,6 +57,18 @@ public class PlayerManager : MonoBehaviour
         if (isKeyPressed)
         {
             Instantiate(enemyObj);
+        }
+        if(_In.HitFlgIn == true)
+        {
+            Debug.Log("In _PlayerManager");
+        }
+        else if (_Out.HitFlgOut == true)
+        {
+            Debug.Log("Out _PlayerManager");
+        }
+        else if(_In.MissFlg == true)
+        {
+            Debug.Log("Miss _PlayerManager");
         }
     }
 
