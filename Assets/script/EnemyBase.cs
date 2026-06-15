@@ -50,25 +50,7 @@ public class EnemyBase : MonoBehaviour
         // 2. 目標フレームレートを「60」に固定する（144などに変更も可能）
         Application.targetFrameRate = 60;
 
-        notesManager = FindAnyObjectByType<NotesManager>();
-        if (notesManager == null)
-        {
-            Debug.LogError("シーン内に NotesManager が見つかりません。");
-        }
-        if (GameObject.FindWithTag("Enemy-mob")) {
-            enemyObject_mob = GameObject.FindWithTag("Enemy-mob");
-            enemyPos_mob = enemyObject_mob.transform;//一応敵の一取得
-        }
-        else if (GameObject.FindWithTag("Enemy-boss"))
-        {
-            enemyObject_boss = GameObject.FindWithTag("Enemy-boss");
-            enemyPos_boss = enemyObject_boss.transform;//一応敵の一取得
-        }
-        if (GameObject.FindWithTag("Player"))
-        {
-            PlayerObject = GameObject.FindWithTag("Player");
-            targetPlayer = PlayerObject.GetComponent<PlayerManager>();
-        }
+        EnemyFind_Func();
         currentHP_ = data_.EnemyHP;
         maxHP_ = currentHP_;
         Debug.Log(currentHP_);
@@ -94,9 +76,54 @@ public class EnemyBase : MonoBehaviour
     // Update is called once per frame
     protected virtual void Update()
     {
+        EnemyFind_Func();
         if (targetPlayer.Pstate == PlayerManager.PlayerState.Attack)
         {
             Estate = EnemyState.Stay;
+            //Debug.Log("敵のステータス: Attack -> Stay");
         }
+        //else
+        //{
+        //    Debug.Log("プレイヤーのステータス: Stay");
+        //}
+        bool isKeyPressed = Keyboard.current != null && Keyboard.current.spaceKey.wasPressedThisFrame;
+        if (isKeyPressed == true)
+        {
+            StartCoroutine(notesManager.CapsuleInst());
+        }
+    }
+    private void EnemyFind_Func()
+    {
+        notesManager = FindAnyObjectByType<NotesManager>();
+
+        if (notesManager == null)
+        {
+            Debug.LogError("シーン内に NotesManager が見つかりません。");
+        }
+        if (GameObject.FindWithTag("Enemy-mob"))
+        {
+            enemyObject_mob = GameObject.FindWithTag("Enemy-mob");
+            enemyPos_mob = enemyObject_mob.transform;//一応敵の一取得
+        }
+        else if (GameObject.FindWithTag("Enemy-boss"))
+        {
+            enemyObject_boss = GameObject.FindWithTag("Enemy-boss");
+            enemyPos_boss = enemyObject_boss.transform;//一応敵の一取得
+        }
+        //else
+        //{
+        //    Debug.Log("mobが一人もいない");
+        //}
+
+        if (GameObject.FindWithTag("Player"))
+        {
+            PlayerObject = GameObject.FindWithTag("Player");
+            targetPlayer = PlayerObject.GetComponent<PlayerManager>();
+        }
+        //else
+        //{
+        //    Debug.Log("プレイヤーtagのobjectが見つかりません");
+        //}
+
     }
 }

@@ -10,47 +10,17 @@ public class NotesManager : MonoBehaviour
     private GameObject FindEnemy;
     private int ListNum_;
     private EnemyInformation enemyData;
-    [SerializeField] private float reTime = 0.01f;
+    //[SerializeField] private float reTime = 0.01f;
     [SerializeField] private float NotesSpeedGain = 0.1f;
-    [SerializeField] private float speed_ = 5.0f;
-    [SerializeField] private float gain_ = 0.1f;
     public Transform NotesTargetPos;
     public Transform NotesTargetPos2;
-    private JudgeManager_in judgeManagerIn;
-    private JudgeManager_out judgeManagerOut;
     void Start()
     {
-        if (GameObject.FindWithTag("Enemy-mob"))
-        {
-            FindEnemy = GameObject.FindWithTag("Enemy-mob");
-        }
-        else if (GameObject.FindWithTag("Enemy-boss"))
-        {
-            FindEnemy = GameObject.FindWithTag("Enemy-boss");
-        }
-        else
-        {
-            Debug.LogWarning("敵オブジェクト（Enemy-mob / Enemy-boss）が見つかりません。");
-            return;
-        }
-        if (FindEnemy.TryGetComponent<EnemyBase>(out EnemyBase enemy))
-        {
-            enemyData = enemy.data_;
-            //Debug.Log($"検知したオブジェクトのデータ: {enemyData.EnemyName}");
-            if (enemyData != null && enemyData.categories.Count > 0 &&
-                enemyData.categories[0].patterns.Count > 0 &&
-                enemyData.categories[0].patterns[0].notes.Count > 0)
-            {
-                float FirstTiming = enemyData.categories[0].patterns[0].notes[0].timing;
-                Debug.Log("最初のノーツのタイミング" + FirstTiming);
-                ListNum_ = enemyData.categories[0].patterns[0].notes.Count;
-                //Debug.Log(ListNum_);
-            }
-            else
-            {
-                Debug.LogError("EnemyInformationのデータ構造が空、または不正です。");
-            }
-        }
+        Enemy_and_notes_Find_Func();
+    }
+    void Update()
+    {
+        Enemy_and_notes_Find_Func();
     }
     public IEnumerator CapsuleInst()
     {
@@ -107,6 +77,41 @@ public class NotesManager : MonoBehaviour
                 yield return null;
             }
             Destroy(capsuleclone_r[i]);
+        }
+    }
+    private void Enemy_and_notes_Find_Func()
+    {
+
+        if (GameObject.FindWithTag("Enemy-mob"))
+        {
+            FindEnemy = GameObject.FindWithTag("Enemy-mob");
+        }
+        else if (GameObject.FindWithTag("Enemy-boss"))
+        {
+            FindEnemy = GameObject.FindWithTag("Enemy-boss");
+        }
+        else
+        {
+            Debug.LogWarning("敵オブジェクト（Enemy-mob / Enemy-boss）が見つかりません。");
+            return;
+        }
+        if (FindEnemy.TryGetComponent<EnemyBase>(out EnemyBase enemy))
+        {
+            enemyData = enemy.data_;
+            //Debug.Log($"検知したオブジェクトのデータ: {enemyData.EnemyName}");
+            if (enemyData != null && enemyData.categories.Count > 0 &&
+                enemyData.categories[0].patterns.Count > 0 &&
+                enemyData.categories[0].patterns[0].notes.Count > 0)
+            {
+                float FirstTiming = enemyData.categories[0].patterns[0].notes[0].timing;
+                //Debug.Log("最初のノーツのタイミング" + FirstTiming);
+                ListNum_ = enemyData.categories[0].patterns[0].notes.Count;
+                //Debug.Log(ListNum_);
+            }
+            else
+            {
+                Debug.LogError("EnemyInformationのデータ構造が空、または不正です。");
+            }
         }
     }
 }
