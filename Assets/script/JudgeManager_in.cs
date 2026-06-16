@@ -19,10 +19,14 @@ public class JudgeManager_in : MonoBehaviour
             hitflgout = GetComponent<JudgeManager_out>();
         }
     }
-
+    //private Coroutine judgementCoroutine;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        StartCoroutine(FineJudgment_in(collision));
+        //if (judgementCoroutine == null)
+        //{
+            //judgementCoroutine = 
+            StartCoroutine(FineJudgment_in(collision));
+        //}
     }
     public IEnumerator FineJudgment_in(Collider2D collisions)
     {
@@ -56,6 +60,6 @@ public class JudgeManager_in : MonoBehaviour
         hitflgout.HitFlgOut = false;
         MissFlg = false;
 
-    yield return new WaitForSeconds(reTime);
+        yield return new WaitForSeconds(reTime);
     }
 }

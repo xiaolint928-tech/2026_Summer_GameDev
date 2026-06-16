@@ -1,3 +1,4 @@
+using DG.Tweening.Core.Easing;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -25,8 +26,8 @@ public class PlayerManager : MonoBehaviour
     }
     public PlayerState Pstate = PlayerState.Attack;
 
-    public JudgeManager_in _In;
-    public JudgeManager_out _Out;
+    [SerializeField] private JudgeManager_in _In;
+    [SerializeField] private JudgeManager_out _Out;
 
     protected Animator animator;
 
@@ -58,17 +59,21 @@ public class PlayerManager : MonoBehaviour
         {
             Instantiate(enemyObj);
         }
+
         if(_In.HitFlgIn == true)
         {
             Debug.Log("In _PlayerManager");
+            _In.HitFlgIn = false;
         }
-        else if (_Out.HitFlgOut == true)
+        if (_Out.HitFlgOut == true)
         {
             Debug.Log("Out _PlayerManager");
+            _Out.HitFlgOut = false;
         }
-        else if(_In.MissFlg == true)
+        if(_In.MissFlg == true)
         {
             Debug.Log("Miss _PlayerManager");
+            _In.MissFlg = false;
         }
     }
 

@@ -35,6 +35,7 @@ public class JudgeManager_out : MonoBehaviour
                 yield return null;
             }
         }
+        HitFlgOut = false;
         yield return new WaitForSeconds(reTime);
     }
 }
