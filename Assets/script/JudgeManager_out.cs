@@ -43,7 +43,7 @@ public class JudgeManager_out : MonoBehaviour
         }
         HitFlgOut = false;
         judgementCoroutine_out = null;
-        //yield return new WaitForSeconds(reTime);
-        yield break;
+        yield return new WaitForSeconds(reTime);
+        //yield break;
     }
 }

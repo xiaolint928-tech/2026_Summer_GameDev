@@ -38,12 +38,12 @@ public class JudgeManager_in : MonoBehaviour
     public IEnumerator FineJudgment_in(Collider2D collisions)
     {
 
-        for(int i = 0; i > notesmanager.ListNum_; i++)
-        {
-            if (collisions == notesmanager.capsuleclone_l[i] )
-            {   
-            }
-        }
+        //for(int i = 0; i > notesmanager.ListNum_; i++)
+        //{
+        //    if (collisions == notesmanager.capsuleclone_l[i] )
+        //    {   
+        //    }
+        //}
         if (ColliderIn_ == null || collisions == null) 
         {
             judgementCoroutine_in = null;
@@ -80,7 +80,7 @@ public class JudgeManager_in : MonoBehaviour
         hitflgout.HitFlgOut = false;
         MissFlg = false;
         judgementCoroutine_in = null;
-        //yield return new WaitForSeconds(reTime);
-        yield break;
+        yield return new WaitForSeconds(reTime);
+        //yield break;
     }
 }
