@@ -9,13 +9,18 @@ public class JudgeManager_out : MonoBehaviour
     [SerializeField] private GameObject cpsl;
     [SerializeField] private float reTime = 0.01f;
     public bool HitFlgOut = false;
+    public Coroutine judgementCoroutine_out;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        StartCoroutine(FineJudgment_out(collision));
+        //if (judgementCoroutine_out == null)
+        //{
+        //    judgementCoroutine_out = 
+                StartCoroutine(FineJudgment_out(collision));
+        //}
     }
     public IEnumerator FineJudgment_out(Collider2D collisions)
     {
-        if (ColliderOut_ == null || collisions == null) yield break;
+        //if (ColliderOut_ == null || collisions == null) yield break;
 
         if (ColliderOut_.IsTouching(collisions))
         {
@@ -25,17 +30,20 @@ public class JudgeManager_out : MonoBehaviour
                 {
                     HitFlgOut = true;
                     //Debug.Log("Collider   Out collision");
+                    judgementCoroutine_out = null;
                     yield break;
                 }
                 if (collisions == null)
                 {
-                    Debug.Log("Collider   Out collision is null");
+                    Debug.LogError("Collider   Out collision is null");
                     yield break;
                 }
                 yield return null;
             }
         }
         HitFlgOut = false;
-        yield return new WaitForSeconds(reTime);
+        judgementCoroutine_out = null;
+        //yield return new WaitForSeconds(reTime);
+        yield break;
     }
 }

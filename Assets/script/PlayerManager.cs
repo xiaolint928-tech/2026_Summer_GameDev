@@ -1,6 +1,7 @@
 using DG.Tweening.Core.Easing;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -60,15 +61,15 @@ public class PlayerManager : MonoBehaviour
             Instantiate(enemyObj);
         }
 
-        if(_In.HitFlgIn == true)
-        {
-            Debug.Log("In _PlayerManager");
-            _In.HitFlgIn = false;
-        }
         if (_Out.HitFlgOut == true)
         {
             Debug.Log("Out _PlayerManager");
             _Out.HitFlgOut = false;
+        }
+        if(_In.HitFlgIn == true)
+        {
+            Debug.Log("In _PlayerManager");
+            _In.HitFlgIn = false;
         }
         if(_In.MissFlg == true)
         {

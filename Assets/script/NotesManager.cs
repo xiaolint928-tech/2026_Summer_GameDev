@@ -8,12 +8,14 @@ public class NotesManager : MonoBehaviour
     public GameObject CapsuleObject;
     public GameObject CapsuleObject_JudgeNull;
     private GameObject FindEnemy;
-    private int ListNum_;
+    public int ListNum_;
     private EnemyInformation enemyData;
     //[SerializeField] private float reTime = 0.01f;
     [SerializeField] private float NotesSpeedGain = 0.1f;
     public Transform NotesTargetPos;
     public Transform NotesTargetPos2;
+    public List<GameObject> capsuleclone_l = new List<GameObject>();
+    public List<GameObject> capsuleclone_r = new List<GameObject>();
     void Start()
     {
         Enemy_and_notes_Find_Func();
@@ -24,8 +26,8 @@ public class NotesManager : MonoBehaviour
     }
     public IEnumerator CapsuleInst()
     {
-        List<GameObject> capsuleclone_l = new List<GameObject>();
-        List<GameObject> capsuleclone_r = new List<GameObject>();
+    //List<GameObject> capsuleclone_l = new List<GameObject>();
+    //List<GameObject> capsuleclone_r = new List<GameObject>();
         // データが正常に読み込めていない場合は生成処理を行わない
         if (enemyData == null || ListNum_ == 0)
         {
@@ -44,6 +46,7 @@ public class NotesManager : MonoBehaviour
             capsuleclone_r.Add(Instantiate(CapsuleObject_JudgeNull, spawnPosition_r, Quaternion.identity));
             StartCoroutine(routine_r(i));
         }
+
         IEnumerator routine_l(int i)
         {
             //while (capsuleclone_l[i].transform.position.x <= 0.00)
@@ -61,6 +64,10 @@ public class NotesManager : MonoBehaviour
             //StopCoroutine(judgeManagerIn.FineJudgment_in(null));
             //StopCoroutine(judgeManagerOut.FineJudgment_out(null));
             Destroy(capsuleclone_l[i]);
+            if (i == ListNum_ - 1)
+            {
+                capsuleclone_l.Clear();
+            }
         }
         IEnumerator routine_r(int i)
         {
@@ -77,6 +84,10 @@ public class NotesManager : MonoBehaviour
                 yield return null;
             }
             Destroy(capsuleclone_r[i]);
+            if (i == ListNum_ - 1)
+            {
+                capsuleclone_r.Clear();
+            }
         }
     }
     private void Enemy_and_notes_Find_Func()

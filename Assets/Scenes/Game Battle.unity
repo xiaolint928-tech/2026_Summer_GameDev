@@ -264,7 +264,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.8949841, y: 0}
+  m_Offset: {x: -0.9018878, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -274,7 +274,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.983887, y: 4.44}
+  m_Size: {x: 2.003781, y: 4.44}
   m_EdgeRadius: 0
 --- !u!61 &70274309
 BoxCollider2D:
@@ -320,7 +320,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 4.006872, y: 4.44}
+  m_Size: {x: 4.006882, y: 4.44}
   m_EdgeRadius: 0
 --- !u!114 &70274310
 MonoBehaviour:
@@ -340,6 +340,7 @@ MonoBehaviour:
   HitFlgIn: 0
   MissFlg: 0
   hitflgout: {fileID: 0}
+  notesmanager: {fileID: 0}
 --- !u!1 &259714904
 GameObject:
   m_ObjectHideFlags: 0
@@ -386,9 +387,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::NotesManager
   CapsuleObject: {fileID: 7524640036349909968, guid: 6b5f10f251b78b440ad82238331b11f2, type: 3}
   CapsuleObject_JudgeNull: {fileID: 7524640036349909968, guid: 98a6cae3af1b1c8469356a4036931509, type: 3}
+  ListNum_: 0
   NotesSpeedGain: 0.3
   NotesTargetPos: {fileID: 259714905}
   NotesTargetPos2: {fileID: 1574941240}
+  capsuleclone_l: []
+  capsuleclone_r: []
 --- !u!1 &486294924
 GameObject:
   m_ObjectHideFlags: 0
