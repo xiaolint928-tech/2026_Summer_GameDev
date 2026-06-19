@@ -38,12 +38,6 @@ public class JudgeManager_in : MonoBehaviour
     public IEnumerator FineJudgment_in(Collider2D collisions)
     {
 
-        //for(int i = 0; i > notesmanager.ListNum_; i++)
-        //{
-        //    if (collisions == notesmanager.capsuleclone_l[i] )
-        //    {   
-        //    }
-        //}
         if (ColliderIn_ == null || collisions == null) 
         {
             judgementCoroutine_in = null;
@@ -56,6 +50,13 @@ public class JudgeManager_in : MonoBehaviour
             {
                 if (Keyboard.current.enterKey.wasPressedThisFrame)
                 {
+                    for(int i = 0; i > notesmanager.ListNum_; i++)
+                    {
+                        if (collisions == notesmanager.capsuleclone_l[i] )
+                        {
+                            Destroy(notesmanager.capsuleclone_r[i]);
+                        }
+                    }
                     HitFlgIn = true;
                     judgementCoroutine_in = null;
                     //Debug.Log("Collider   In collision");

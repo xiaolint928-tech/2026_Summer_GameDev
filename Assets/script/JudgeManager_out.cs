@@ -10,6 +10,17 @@ public class JudgeManager_out : MonoBehaviour
     [SerializeField] private float reTime = 0.01f;
     public bool HitFlgOut = false;
     public Coroutine judgementCoroutine_out;
+    [SerializeField] private NotesManager notesmanager;
+
+    void Start()
+    {
+        if(notesmanager == null)
+        {
+            notesmanager = GetComponent<NotesManager>();
+        }
+        
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //if (judgementCoroutine_out == null)
@@ -28,6 +39,13 @@ public class JudgeManager_out : MonoBehaviour
             {
                 if (Keyboard.current.enterKey.wasPressedThisFrame)
                 {
+                    for (int i = 0; i > notesmanager.ListNum_; i++)
+                    {
+                        if (collisions == notesmanager.capsuleclone_l[i])
+                        {
+                            Destroy(notesmanager.capsuleclone_r[i]);
+                        }
+                    }
                     HitFlgOut = true;
                     //Debug.Log("Collider   Out collision");
                     judgementCoroutine_out = null;
