@@ -39,13 +39,6 @@ public class JudgeManager_out : MonoBehaviour
             {
                 if (Keyboard.current.enterKey.wasPressedThisFrame)
                 {
-                    for (int i = 0; i > notesmanager.ListNum_; i++)
-                    {
-                        if (collisions == notesmanager.capsuleclone_l[i])
-                        {
-                            Destroy(notesmanager.capsuleclone_r[i]);
-                        }
-                    }
                     HitFlgOut = true;
                     //Debug.Log("Collider   Out collision");
                     judgementCoroutine_out = null;

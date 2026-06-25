@@ -13,6 +13,7 @@ public class PlayerManager : MonoBehaviour
     private int currentSTR_;
     private int maxDIF_;//max
     private int currentDIF_;
+    public int AccumulationDamage;
 
     bool targetflg_;
 
