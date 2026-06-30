@@ -230,6 +230,7 @@ MonoBehaviour:
   cpsl: {fileID: 7524640036349909968, guid: 6b5f10f251b78b440ad82238331b11f2, type: 3}
   reTime: 0.01
   HitFlgOut: 0
+  notesmanager: {fileID: 0}
 --- !u!61 &70274308
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -647,6 +648,51 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &841154633
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 841154634}
+  - component: {fileID: 841154635}
+  m_Layer: 0
+  m_Name: STAGE_sride
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &841154634
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 841154633}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.02969, y: -1.95763, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &841154635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 841154633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 484941e2de3a51344a7e5c313075586f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  currentStage: 1
 --- !u!1001 &1068883744
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -800,6 +846,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b44d44f5c8da39045859547c54668e66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerManager
+  AccumulationDamage: 0
   enemyObj: {fileID: 1139396563661346495, guid: 832aca7b607114b42b71359ca4092f7e, type: 3}
   Pstate: 1
   _In: {fileID: 70274310}
@@ -1078,3 +1125,4 @@ SceneRoots:
   - {fileID: 259714905}
   - {fileID: 1574941240}
   - {fileID: 1068883744}
+  - {fileID: 841154634}

@@ -10,6 +10,7 @@ TagManager:
   - Enemy-mob
   - Enemy-boss
   - notes
+  - STAGE_SRIDE
   layers:
   - Default
   - TransparentFX

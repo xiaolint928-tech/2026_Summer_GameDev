@@ -26,9 +26,6 @@ public class PlayerInfomation : ScriptableObject
     //“G‚Ì–hŒä—Í(0%`100%¨0.0`1.0)
     public float PlayerDIF;
 
-    //ƒm[ƒc‚Ì—ˆ‚éƒ^ƒCƒ~ƒ“ƒO‚Ìí—Ş‚Ì”
-    public List<PatternCategory> skills = new List<SkillsCategory>();
-
-    //ƒm[ƒc‚Ì—ˆ‚éŠÔŠu
+    public List<SkillsCategory> skills = new List<SkillsCategory>();
 
 }
